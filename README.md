@@ -7,7 +7,6 @@ Sample project that implements the MVVM architecture using Kotlin, Data Binding,
 2. RxJava2: https://github.com/ReactiveX/RxJava
 3. Dagger2: https://github.com/google/dagger
 4. Retrofit: https://github.com/square/retrofit
-5. Glide: https://github.com/bumptech/glide
 
 ### Layers of the app:
  * Data - contains the model/business model that will be presented to the view, related classes included Reponse models, classes associated with the Room database library
