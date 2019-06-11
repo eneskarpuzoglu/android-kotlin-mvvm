@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.login.LoginActivity">
+    <data>
+        <variable
+                name="viewModel"
+                type="com.kar.enes.app.ui.login.LoginViewModel"/>
+    </data>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:id="@+id/login_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
+            <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:textColor="@color/colorPrimaryText"
+                    android:drawableLeft="@drawable/ic_user_black"
+                    android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:hint="@string/username"/>
+            <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorPrimaryText"
+                    android:drawableLeft="@drawable/ic_password_black"
+                    android:afterTextChanged="@{(editable)->viewModel.afterPasswordTextChanged(editable)}"
+                    android:padding="5dp"
+                    android:hint="@string/password"/>
+            <RelativeLayout
+                    android:id="@+id/login_button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+            >
+                <Button
+                        android:id="@+id/btLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/LoginButon"
+                        android:textColor="@color/white"
+                        android:onClick="@{()->viewModel.clickLogin()}"
+                        android:textAllCaps="false"
+                        android:text="@string/login"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
