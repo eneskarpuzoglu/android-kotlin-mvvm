@@ -1,20 +1,19 @@
 package com.kar.enes.app
 
-import android.app.Activity
 import android.app.Application
 import com.kar.enes.app.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * Created by M.Enes on 5/8/2019
  */
-class App : Application(), HasActivityInjector {
+class App : Application(), HasAndroidInjector {
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -28,7 +27,7 @@ class App : Application(), HasActivityInjector {
             .inject(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> {
+    override fun androidInjector(): AndroidInjector<Any> {
         return dispatchingAndroidInjector
     }
 }
