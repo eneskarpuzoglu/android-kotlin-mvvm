@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="PREF_KEY_DARK_THEME" translatable="false">PREF_KEY_DARK_THEME</string>
+</resources>

@@ -1,9 +1,10 @@
 package com.kar.enes.app.data.local.prefs
 
 import android.content.Context
-import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.kar.enes.app.R
 import com.kar.enes.app.data.DataManager
 import com.kar.enes.app.di.annotations.PreferenceInfo
 import com.kar.enes.app.data.model.UserModel
@@ -18,23 +19,20 @@ class AppPreferencesHelper @Inject constructor(val context: Context, @Preference
 
     private val PREF_KEY_USER = "PREF_KEY_USER"
     private val PREF_KEY_LOGGED_MODE = "PREF_KEY_LOGGED_MODE"
-    val mPrefs:SharedPreferences = context.getSharedPreferences(prefFileName,Context.MODE_PRIVATE)
+    val mPrefs = PreferenceManager.getDefaultSharedPreferences(context)
 
 
-
-    override fun getUser(): UserModel? {
-        return getComplex(PREF_KEY_USER, UserModel::class.java)
+    override fun isDarkTheme(): Boolean = mPrefs.getBoolean(context.getString(R.string.PREF_KEY_DARK_THEME),false)
+    override fun setDarkTheme(boolean: Boolean) {
+        mPrefs.edit().putBoolean(context.getString(R.string.PREF_KEY_DARK_THEME),boolean).apply()
     }
 
+    override fun getUser(): UserModel? = getComplex(PREF_KEY_USER, UserModel::class.java)
     override fun setUser(model: UserModel?) {
         saveComplex(PREF_KEY_USER,model)
     }
 
-    override fun getCurrentUserLoggedMode(): Int {
-        val a: Int? = mPrefs.getInt(PREF_KEY_LOGGED_MODE, DataManager.LoggedMode.LOGGED_OUT.type)
-        return a ?: 0
-    }
-
+    override fun getCurrentUserLoggedMode(): Int = mPrefs.getInt(PREF_KEY_LOGGED_MODE, DataManager.LoggedMode.LOGGED_OUT.type)
     override fun setCurrentUserLoggedMode(mode: DataManager.LoggedMode?) {
         if (mode != null) {
             mPrefs.edit().putInt(PREF_KEY_LOGGED_MODE, mode.type).apply()

@@ -9,11 +9,11 @@ import com.kar.enes.app.data.model.UserModel
 interface PreferencesHelper {
 
     fun getUser(): UserModel?
-
     fun setUser(model: UserModel?)
 
+    fun isDarkTheme(): Boolean
+    fun setDarkTheme(boolean: Boolean)
 
     fun getCurrentUserLoggedMode(): Int?
-
     fun setCurrentUserLoggedMode(mode: DataManager.LoggedMode?)
 }

@@ -15,8 +15,10 @@ class AppDataManager @Inject constructor(private val api: ApiHelper,private val 
 
 
     override fun getUser(): UserModel? = preferencesHelper.getUser()
-
     override fun setUser(model: UserModel?) = preferencesHelper.setUser(model)
+
+    override fun isDarkTheme(): Boolean = preferencesHelper.isDarkTheme()
+    override fun setDarkTheme(boolean: Boolean) = preferencesHelper.setDarkTheme(boolean)
 
 
     override fun getCurrentUserLoggedMode(): Int? {

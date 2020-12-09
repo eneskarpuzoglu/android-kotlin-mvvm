@@ -1,9 +1,9 @@
 package com.kar.enes.app.di
 
-import com.kar.enes.app.ui.login.LoginActivity
-import com.kar.enes.app.ui.splash.SplashActivity
-import com.kar.enes.app.ui.splash.SplashActivityModule
-import com.kar.enes.app.ui.login.LoginActivityModule
+import com.kar.enes.app.ui.launch.LauncherActivity
+import com.kar.enes.app.ui.launch.LauncherActivityModule
+import com.kar.enes.app.ui.launch.login.LoginFragmentProvider
+import com.kar.enes.app.ui.launch.splash.SplashFragmentProvider
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,10 +13,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class BuilderModule {
 
-    @ContributesAndroidInjector(modules = [LoginActivityModule::class])
-    internal abstract fun bindLoginActivity(): LoginActivity
-
-
-    @ContributesAndroidInjector(modules = [SplashActivityModule::class])
-    internal abstract fun bindSplashActivity(): SplashActivity
+    @ContributesAndroidInjector(modules = [LauncherActivityModule::class,SplashFragmentProvider::class,LoginFragmentProvider::class])
+    internal abstract fun bindLauncherActivity(): LauncherActivity
 }

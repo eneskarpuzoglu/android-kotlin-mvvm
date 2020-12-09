@@ -1,6 +1,8 @@
 package com.kar.enes.app
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceManager
 import com.kar.enes.app.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -17,6 +19,11 @@ class App : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.PREF_KEY_DARK_THEME),false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

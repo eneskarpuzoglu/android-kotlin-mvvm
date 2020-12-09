@@ -1,4 +1,4 @@
-package com.kar.enes.app.ui.login
+package com.kar.enes.app.ui.launch
 
 import dagger.Module
 
@@ -6,6 +6,6 @@ import dagger.Module
  * Created by M.Enes on 24.04.2019
  */
 @Module
-abstract class LoginActivityModule {
+abstract class LauncherActivityModule {
 
 }

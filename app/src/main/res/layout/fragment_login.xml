@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".ui.login.LoginActivity">
+<layout xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <import type="android.view.View"/>
         <variable
                 name="viewModel"
-                type="com.kar.enes.app.ui.login.LoginViewModel"/>
+                type="com.kar.enes.app.ui.launch.login.LoginViewModel" />
     </data>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/transparent"
                     android:textColor="@color/colorPrimaryText"
-                    android:drawableLeft="@drawable/ic_user_black"
+                    android:drawableStart="@drawable/ic_user"
                     android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
                     android:inputType="textEmailAddress"
                     android:padding="5dp"
@@ -38,7 +38,7 @@
                     android:background="@color/transparent"
                     android:inputType="textPassword"
                     android:textColor="@color/colorPrimaryText"
-                    android:drawableLeft="@drawable/ic_password_black"
+                    android:drawableStart="@drawable/ic_password"
                     android:afterTextChanged="@{(editable)->viewModel.afterPasswordTextChanged(editable)}"
                     android:padding="5dp"
                     android:hint="@string/password"/>
@@ -47,18 +47,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-            >
+                    >
                 <Button
                         android:id="@+id/btLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:theme="@style/LoginButon"
                         android:textColor="@color/white"
+                        style="@style/LoginButton"
                         android:onClick="@{()->viewModel.clickLogin()}"
                         android:textAllCaps="false"
                         android:text="@string/login"/>
             </RelativeLayout>
 
         </LinearLayout>
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lawTheme"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="@{()-> viewModel.changeTheme()}"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                app:lottie_autoPlay="false"
+                app:lottie_rawRes="@raw/day_night"
+                app:lottie_loop="false" />
     </RelativeLayout>
 </layout>

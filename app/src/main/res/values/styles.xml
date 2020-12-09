@@ -1,15 +1,13 @@
 <resources>
-
-    <style name="LoginButon" parent="Theme.AppCompat">
-        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
-    </style>
-
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
     </style>
 
 </resources>

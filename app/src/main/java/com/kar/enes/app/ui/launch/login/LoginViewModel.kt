@@ -1,10 +1,10 @@
-package com.kar.enes.app.ui.login
+package com.kar.enes.app.ui.launch.login
 
-import com.kar.enes.app.data.remote.ApiObserver
 import com.kar.enes.app.data.DataManager
-import com.kar.enes.app.data.model.request.LoginReq
 import com.kar.enes.app.data.model.api.ErrorData
+import com.kar.enes.app.data.model.request.LoginReq
 import com.kar.enes.app.data.model.response.LoginResponse
+import com.kar.enes.app.data.remote.ApiObserver
 import com.kar.enes.app.ui.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +12,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Created by M.Enes on 24.04.2019
+ * Created by M.Enes on 10/21/2020.
  */
 class LoginViewModel @Inject constructor(dataManager: DataManager): BaseViewModel<LoginNavigator>(dataManager) {
 
@@ -62,5 +62,16 @@ class LoginViewModel @Inject constructor(dataManager: DataManager): BaseViewMode
         }
         login(username,password)
     }
+
+    fun changeTheme(){
+        if (dataManager.isDarkTheme()){
+            dataManager.setDarkTheme(false)
+            getNavigator()!!.setDay()
+        }else{
+            dataManager.setDarkTheme(true)
+            getNavigator()!!.setNight()
+        }
+    }
+
 
 }
