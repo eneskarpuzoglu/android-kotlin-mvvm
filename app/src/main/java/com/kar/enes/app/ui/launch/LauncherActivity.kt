@@ -2,7 +2,6 @@ package com.kar.enes.app.ui.launch
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.kar.enes.app.BR
 import com.kar.enes.app.R
 import com.kar.enes.app.databinding.ActivityLauncherBinding
@@ -28,7 +27,7 @@ class LauncherActivity : BaseActivity<ActivityLauncherBinding, LauncherViewModel
     }
 
     override fun getViewModel(): LauncherViewModel {
-        launchViewModel = ViewModelProviders.of(this, viewModelFactory).get(LauncherViewModel::class.java)
+        launchViewModel = ViewModelProvider(this, viewModelFactory)[LauncherViewModel::class.java]
         return launchViewModel
     }
     override fun androidInjector(): AndroidInjector<Any> {

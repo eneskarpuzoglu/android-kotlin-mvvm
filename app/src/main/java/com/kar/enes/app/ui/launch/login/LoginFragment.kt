@@ -5,12 +5,9 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.kar.enes.app.BR
 import com.kar.enes.app.R
 import com.kar.enes.app.databinding.FragmentLoginBinding
@@ -36,7 +33,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding, LoginViewModel>(),LoginN
     }
 
     override fun getViewModel(): LoginViewModel {
-        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
         return  loginViewModel
     }
 
@@ -46,8 +43,8 @@ class LoginFragment: BaseFragment<FragmentLoginBinding, LoginViewModel>(),LoginN
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
         if (loginViewModel.dataManager.isDarkTheme()){
             lawTheme.progress = 0.5f
         }else{

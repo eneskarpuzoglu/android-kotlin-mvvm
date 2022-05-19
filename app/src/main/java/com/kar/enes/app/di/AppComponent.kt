@@ -1,6 +1,10 @@
 package com.kar.enes.app.di
 
 import com.kar.enes.app.App
+import com.kar.enes.app.di.module.AppContextModule
+import com.kar.enes.app.di.module.BuilderModule
+import com.kar.enes.app.di.module.NetworkModule
+import com.kar.enes.app.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

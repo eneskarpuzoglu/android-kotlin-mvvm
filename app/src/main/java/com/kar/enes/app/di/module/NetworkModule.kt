@@ -1,4 +1,4 @@
-package com.kar.enes.app.di
+package com.kar.enes.app.di.module
 
 import android.content.Context
 import com.google.gson.Gson

@@ -1,11 +1,9 @@
 package com.kar.enes.app.ui.launch.splash
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.kar.enes.app.BR
 import com.kar.enes.app.R
@@ -32,7 +30,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding, SplashViewModel>(),Spl
     }
 
     override fun getViewModel(): SplashViewModel {
-        splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+        splashViewModel = ViewModelProvider(this, viewModelFactory)[SplashViewModel::class.java]
         return splashViewModel
     }
 
@@ -44,7 +42,6 @@ class SplashFragment: BaseFragment<FragmentSplashBinding, SplashViewModel>(),Spl
 
     private fun start() {
         Handler(Looper.getMainLooper()).postDelayed({
-            // Login ekranini ac
             openLogin()
         }, AppConstants.SPLASH_TIME)
     }
